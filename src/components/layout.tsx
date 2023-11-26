@@ -5,7 +5,6 @@ import { Html } from '@react-email/html';
 import { Link } from '@react-email/link';
 import { Preview } from '@react-email/preview';
 import { Tailwind } from '@react-email/tailwind';
-import { Text } from '@react-email/text';
 
 import React, { PropsWithChildren } from 'react';
 import { container, main } from '../config/styles';
@@ -19,7 +18,6 @@ type Props = {
 export const Layout = (props: Props) => (
   <Html>
     <Head />
-    <Text>Preview : {props.preview}</Text>
     <Preview>{props.preview}</Preview>
     <Body style={main}>
       <Container style={container}>
