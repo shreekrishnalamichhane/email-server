@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  email:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - 7005:5000
+    volumes:
+      - ./public:/app/public
+    restart: on-failure
+    networks:
+      - velorona-backend
+
+networks:
+  velorona-backend:
+    name: velorona-backend
+    driver: bridge
