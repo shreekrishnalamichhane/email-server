@@ -1,0 +1,31 @@
+name: Dev Deployment
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  deploy:
+    name: Devlopment Deployment
+    runs-on: [self-hosted, dev]
+
+    steps:
+      - name: Checking user account
+        id: step_one
+        run: |
+          whoami
+
+      - name: Fetching Changes from Github
+        id: step_two
+        run: |
+          git pull origin develop
+
+      - name: Bringing up the service
+        id: step_three
+        run: |
+          docker compose up --build --detach
+
+      - name: Cleaning up
+        id: step_four
+        run: |
+          docker system prune --all --force
